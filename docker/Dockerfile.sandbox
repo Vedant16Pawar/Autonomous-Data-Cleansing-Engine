@@ -1,0 +1,20 @@
+# Lightweight official Python image
+FROM python:3.11-slim
+
+# Prevent Python from creating .pyc files
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Ensure logs are printed immediately
+ENV PYTHONUNBUFFERED=1
+
+# Working directory inside the container
+WORKDIR /sandbox
+
+# Install only the libraries that generated code is allowed to use
+RUN pip install --no-cache-dir \
+    pandas \
+    numpy
+
+# No ENTRYPOINT or CMD.
+# The Docker SDK will decide what command to run
+# for each execution.
