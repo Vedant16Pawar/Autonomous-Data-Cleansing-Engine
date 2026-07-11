@@ -1,0 +1,205 @@
+/* ================================================
+   DESIGN SYSTEM TOKENS (DARK GREY CONSOLE THEME)
+   ================================================ */
+
+:root {
+  /* Dark Grey background & Surface panels */
+  --bg-primary: #18181b;     /* Deep dark grey canvas */
+  --bg-secondary: #242428;   /* Dark grey card surfaces */
+  --bg-card: #242428;
+  --bg-card-hover: #2d2d31;
+  --bg-input: #18181b;
+
+  /* Accent — Standard Corporate Control Blue */
+  --accent-primary: #3b82f6;   
+  --accent-secondary: #2563eb;
+  --accent-glow: rgba(59, 130, 246, 0.15);
+  --accent-gradient: #3b82f6; 
+
+  /* Semantic - Matte Git-diff colors */
+  --color-success: #2ea043;           /* Diff Green */
+  --color-success-bg: rgba(46, 160, 67, 0.15);
+  --color-success-border: rgba(46, 160, 67, 0.3);
+  --color-error: #f85149;             /* Diff Red */
+  --color-error-bg: rgba(248, 81, 73, 0.15);
+  --color-error-border: rgba(248, 81, 73, 0.3);
+  --color-warning: #d29922;           /* Tech Amber */
+  --color-warning-bg: rgba(210, 153, 34, 0.15);
+  --color-warning-border: rgba(210, 153, 34, 0.3);
+
+  /* Text */
+  --text-primary: #f4f4f5;    /* Off-white */
+  --text-secondary: #a1a1aa;  /* Light grey */
+  --text-muted: #71717a;      /* Medium grey */
+
+  /* Mechanical Grid Borders matching the Dark Grey tones */
+  --border-subtle: #2e2e33;
+  --border-input: #3f3f46;
+  --border-accent: #3b82f6;
+
+  /* Standard developer control rounding */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+
+  /* Clean depth shadows */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-glow: none;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Transitions */
+  --transition-fast: 100ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* ================================================
+   RESET & BASE
+   ================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+body::before {
+  display: none;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+/* ================================================
+   UTILITY CLASSES (FLAT PANEL THEME)
+   ================================================ */
+
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #2ea043; /* Clean green for primary submission */
+  color: #ffffff;
+  border: 1px solid rgba(27, 31, 36, 0.15);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #2c974b;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #21262d;
+  color: var(--text-muted);
+  border-color: var(--border-subtle);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #27272a;
+  color: #f4f4f5;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background-color: #3f3f46;
+  border-color: #71717a;
+}
+
+/* ================================================
+   SCROLLBAR
+   ================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ================================================
+   APP LAYOUT
+   ================================================ */
+
+.app-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+/* ================================================
+   ANIMATIONS (SUBTLE & MECHANICAL)
+   ================================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 150ms ease forwards;
+}

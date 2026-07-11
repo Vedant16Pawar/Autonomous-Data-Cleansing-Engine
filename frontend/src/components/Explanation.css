@@ -1,0 +1,32 @@
+.explanation {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-primary);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-top: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.explanation__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.explanation__header-icon {
+  font-size: 0.95rem;
+  color: var(--accent-primary);
+}
+
+.explanation__text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}

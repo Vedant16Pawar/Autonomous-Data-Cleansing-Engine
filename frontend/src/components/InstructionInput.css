@@ -1,0 +1,49 @@
+.instruction-input {
+  margin-bottom: 20px;
+}
+
+.instruction-input__textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 70px;
+  transition: border-color var(--transition-fast);
+}
+
+.instruction-input__textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 1px var(--accent-primary);
+}
+
+.instruction-input__textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.instruction-input__textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.instruction-input__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.instruction-input__hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.instruction-input__btn {
+  padding: 6px 14px;
+}

@@ -1,47 +1,45 @@
-"""
-from backend.agent.tools import inspect_dataframe
+from backend.agent.tools import (
+    inspect_dataframe,
+    generate_cleaning_code,
+    execute_generated_code_reliably,
+    validate_output,
+)
 
-file_path = "uploads/8680da78-b999-46f3-b473-e52f7a7a3825.csv"
-
-summary = inspect_dataframe.invoke({"file_path": file_path})
-
-print(summary)
-
-"""
-from dotenv import load_dotenv
-
-load_dotenv()
-
-from backend.agent.tools import generate_cleaning_code
-
-schema_summary = """
-Total Rows: 100
-Total Columns: 3
-
-Columns and Data Types:
-- name: object
-- age: float64
-- email: object
-
-Missing Values:
-- name: 0
-- age: 15
-- email: 2
-
-First 20 Rows:
-(name, age, email ...)
+instruction = """
+Remove duplicate rows.
+Fill missing Age values with the median.
+Convert Email to lowercase.
 """
 
-user_instruction = "Remove rows where age is null."
-
-generated_code = generate_cleaning_code.invoke(
+inspect_result = inspect_dataframe.invoke(
     {
-        "schema_summary": schema_summary,
-        "user_instruction": user_instruction,
+        "file_path": "sample.csv"
     }
 )
 
-print("=" * 80)
-print("GENERATED CODE")
-print("=" * 80)
-print(generated_code)
+code_result = generate_cleaning_code.invoke(
+    {
+        "schema_summary": inspect_result.summary,
+        "user_instruction": instruction,
+    }
+)
+
+execution_result = execute_generated_code_reliably.invoke(
+    {
+        "generated_code": code_result.generated_code,
+        "user_instruction": instruction,
+        "input_csv_path": "sample.csv",
+    }
+)
+
+validation_result = validate_output.invoke(
+    {
+        "input_csv_path": "sample.csv",
+        "output_csv_path": execution_result.output_path,
+        "user_instruction": instruction,
+    }
+)
+
+print("\n===== Validation Result =====\n")
+print(type(validation_result))
+print(validation_result)

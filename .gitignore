@@ -1,7 +1,20 @@
+# Python Virtual Environments
 venv/
+.venv/
+env/
+
+# Local Secrets (Crucial to prevent leaks)
 .env
+.env.local
+.env.*.local
+
+# Python cache files
 __pycache__/
 *.pyc
+
+# Local runtime directories used for file processing
 outputs/
 uploads/
-sample.csv
+
+# Sample datasets
+*.csv
