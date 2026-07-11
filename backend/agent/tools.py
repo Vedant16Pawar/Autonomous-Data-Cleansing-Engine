@@ -106,6 +106,10 @@ def generate_cleaning_code(
                 6. Do NOT use markdown.
                 7. Do NOT wrap the code inside ```python or ``` fences.
                 8. The final script must be directly executable.
+                9. SAFETY: The output dataset must NEVER have 0 rows. If your transformations would remove all rows, skip that transformation and keep the data as-is.
+                10. When removing duplicates, use df.drop_duplicates() on ALL columns. Do NOT drop identifier columns before checking for duplicates.
+                11. When filling missing values (e.g., fillna with median), apply it ONLY to the specific column the user mentions. Do NOT drop rows with missing values unless the user explicitly asks to drop them.
+                12. Always use inplace=False and reassign (e.g., df = df.drop_duplicates()) rather than inplace=True.
                 """,
             ),
             (
