@@ -36,7 +36,7 @@ app.add_middleware(
 )
 
 # Folder where uploaded CSVs will be stored
-UPLOAD_DIR = "uploads"
+UPLOAD_DIR = "/tmp/cleansing-data/uploads"
 
 # Create the folder if it doesn't already exist
 os.makedirs(UPLOAD_DIR, exist_ok=True)

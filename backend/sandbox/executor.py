@@ -11,8 +11,12 @@ from docker.errors import ContainerError, DockerException
 SANDBOX_IMAGE = "data-cleaning-sandbox"
 
 # Directory where successful output CSVs will be stored
-OUTPUT_DIR = Path("outputs")
-OUTPUT_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR = Path("/tmp/cleansing-data/outputs")
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+# Shared temp directory for sandbox work
+SANDBOX_WORK_DIR = "/tmp/cleansing-data/sandbox"
+os.makedirs(SANDBOX_WORK_DIR, exist_ok=True)
 
 
 def run_code_in_docker(code: str, input_csv_path: str) -> dict:
@@ -42,7 +46,7 @@ def run_code_in_docker(code: str, input_csv_path: str) -> dict:
 
     client = docker.from_env()
 
-    temp_dir = tempfile.mkdtemp()
+    temp_dir = tempfile.mkdtemp(dir=SANDBOX_WORK_DIR)
 
     container = None
 

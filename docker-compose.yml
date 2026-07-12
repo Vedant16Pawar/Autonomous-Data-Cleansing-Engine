@@ -8,8 +8,9 @@ services:
       - "8080:8000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:rw
-      - ./uploads:/app/uploads
-      - ./outputs:/app/outputs
+      - /tmp/cleansing-data/uploads:/tmp/cleansing-data/uploads
+      - /tmp/cleansing-data/outputs:/tmp/cleansing-data/outputs
+      - /tmp/cleansing-data/sandbox:/tmp/cleansing-data/sandbox
     env_file:
       - .env
     restart: always
